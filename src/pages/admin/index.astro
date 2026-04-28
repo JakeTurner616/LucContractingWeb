@@ -15,6 +15,20 @@
     </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
+      const relabelAuthButton = () => {
+        document.querySelectorAll("button, a").forEach((element) => {
+          if (element.textContent?.trim() === "Login with GitHub") {
+            element.textContent = "Login with Google";
+          }
+        });
+      };
+
+      new MutationObserver(relabelAuthButton).observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+      relabelAuthButton();
+
       const previewStyles = `
         .preview-root {
           background: #f7f4ee;
