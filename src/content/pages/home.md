@@ -1,5 +1,5 @@
 ---
-hero_heading: Reliable general contracting for projects that need to be done right.
+hero_heading: Reliable general contracting Decap CMS test
 hero_text: From repairs and punch lists to remodels and build-outs, Luc
   Contracting keeps the work organized, clean, and moving.
 phone: (555) 123-4567
