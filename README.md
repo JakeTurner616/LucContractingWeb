@@ -1,46 +1,54 @@
-# Astro Starter Kit: Basics
+## Project Overview
 
-```sh
-npm create astro@latest -- --template basics
-```
+This repo contains a custom-built static site powered by Astro and the Decap content management system.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## Update & Deployment Workflow
 
-Inside of your Astro project, you'll see the following folders and files:
+Content updates are handled through the Decap CMS interface at /admin, and use github oauth for admin authentication
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+Publishing content follows a fully automated pipeline:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+1. Changes are made and published through the CMS
+2. The CMS commits those changes to the GitHub repository
+3. GitHub Actions (or equivalent) triggers a build
+4. Astro compiles the site into static files
+5. The site is deployed automatically
+6. Changes appear live once the deployment completes
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
+## Stack
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **Web Framework:** Astro
+- **CMS:** Decap CMS (Git-based)
+- **Deployment:** Automated CI/CD workflow
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Assets & Media
+
+- Images uploaded via the CMS are stored within the repository
+- Assets are optimized during the build process
+- The site is generated as static files for maximum performance and serving on CDN at scale
+
+---
+
+## Access & Usage Notes
+
+- This repository contains commissioned, proprietary code
+- Access is provided strictly for maintaining and updating this specific website
+- Content (text, images, branding) belongs to the client
+- Code, structure, and deployment systems remain the property of the developer
+
+For licensing details, refer to the `LICENSE.md` file.
+
+---
+
+## Support
+
+For technical support, questions, or modification requests, please contact:
+
+**Jakob Turner**  
+jake@serverboi.org
