@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: JakeTurner616/LucContractingWeb
+  branch: main
+  base_url: https://luc-contracting-auth.jake-3c8.workers.dev
+  auth_endpoint: /auth
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: pages
+    label: Pages
+    files:
+      - name: home
+        label: Home Page
+        file: src/content/pages/home.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: hero_heading, label: Hero Heading, widget: string }
+          - { name: hero_text, label: Hero Text, widget: text }
+          - { name: phone, label: Phone Number, widget: string }
+          - { name: email, label: Email, widget: string, required: false }
+
+  - name: services
+    label: Services
+    folder: src/content/services
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Service Name, widget: string }
+      - { name: summary, label: Short Summary, widget: text }
+      - { name: body, label: Details, widget: markdown }
+
+  - name: projects
+    label: Projects
+    folder: src/content/projects
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Project Name, widget: string }
+      - { name: location, label: Location, widget: string, required: false }
+      - { name: image, label: Project Image, widget: image, required: false }
+      - { name: body, label: Project Details, widget: markdown }
