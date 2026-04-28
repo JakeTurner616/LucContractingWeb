@@ -5,6 +5,9 @@ backend:
   base_url: https://luc-contracting-auth.jake-3c8.workers.dev
   auth_endpoint: /auth
 
+local_backend:
+  url: http://localhost:8081/api/v1
+
 media_folder: public/uploads
 public_folder: /uploads
 
@@ -17,10 +20,14 @@ collections:
         file: src/content/pages/home.md
         fields:
           - { name: title, label: Title, widget: string }
+          - { name: description, label: Meta Description, widget: text, required: false }
           - { name: hero_heading, label: Hero Heading, widget: string }
           - { name: hero_text, label: Hero Text, widget: text }
           - { name: phone, label: Phone Number, widget: string }
           - { name: email, label: Email, widget: string, required: false }
+          - { name: service_area, label: Service Area, widget: string, required: false }
+          - { name: cta_label, label: Button Label, widget: string, required: false }
+          - { name: body, label: About Copy, widget: markdown }
 
   - name: services
     label: Services
@@ -30,6 +37,7 @@ collections:
     fields:
       - { name: title, label: Service Name, widget: string }
       - { name: summary, label: Short Summary, widget: text }
+      - { name: order, label: Display Order, widget: number, required: false, value_type: int }
       - { name: body, label: Details, widget: markdown }
 
   - name: projects
@@ -41,4 +49,6 @@ collections:
       - { name: title, label: Project Name, widget: string }
       - { name: location, label: Location, widget: string, required: false }
       - { name: image, label: Project Image, widget: image, required: false }
+      - { name: summary, label: Short Summary, widget: text, required: false }
+      - { name: order, label: Display Order, widget: number, required: false, value_type: int }
       - { name: body, label: Project Details, widget: markdown }
