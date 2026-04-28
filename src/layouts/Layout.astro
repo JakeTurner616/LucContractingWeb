@@ -1,3 +1,26 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+	canonicalPath?: string;
+	socialTitle?: string;
+	socialDescription?: string;
+	socialImage?: string;
+}
+
+const {
+	title = "Luc Contracting",
+	description = "Luc Contracting provides general contracting, remodeling, repairs, and project coordination.",
+	canonicalPath = "/",
+	socialTitle = title,
+	socialDescription = description,
+	socialImage,
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, Astro.site ?? Astro.url).toString();
+const socialImageUrl = socialImage ? new URL(socialImage, Astro.site ?? Astro.url).toString() : undefined;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,8 +29,18 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Luc Contracting provides general contracting, remodeling, repairs, and project coordination." />
-		<title>Luc Contracting</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={socialTitle} />
+		<meta property="og:description" content={socialDescription} />
+		<meta property="og:url" content={canonicalUrl} />
+		{socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+		<meta name="twitter:card" content={socialImageUrl ? "summary_large_image" : "summary"} />
+		<meta name="twitter:title" content={socialTitle} />
+		<meta name="twitter:description" content={socialDescription} />
+		{socialImageUrl && <meta name="twitter:image" content={socialImageUrl} />}
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />

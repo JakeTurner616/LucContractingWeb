@@ -10,6 +10,454 @@
     <title>Luc Contracting CMS</title>
   </head>
   <body>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      const previewStyles = `
+        .preview-root {
+          background: #f7f4ee;
+          color: #1f2520;
+          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          min-height: 100%;
+          padding: 28px;
+        }
+
+        .preview-root * {
+          box-sizing: border-box;
+        }
+
+        .preview-shell {
+          margin: 0 auto;
+          max-width: 980px;
+        }
+
+        .preview-header {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 48px;
+        }
+
+        .preview-browser {
+          background: #ffffff;
+          border: 1px solid #e4ded4;
+          border-radius: 8px;
+          margin-bottom: 28px;
+          overflow: hidden;
+        }
+
+        .preview-browser-bar {
+          align-items: center;
+          background: #efebe4;
+          border-bottom: 1px solid #e4ded4;
+          display: flex;
+          gap: 8px;
+          padding: 10px 12px;
+        }
+
+        .preview-dot {
+          background: #8a4b2a;
+          border-radius: 999px;
+          height: 9px;
+          opacity: 0.55;
+          width: 9px;
+        }
+
+        .preview-browser-content {
+          padding: 16px;
+        }
+
+        .preview-browser-title {
+          color: #1f2520;
+          font-size: 1rem;
+          font-weight: 800;
+          margin-bottom: 6px;
+        }
+
+        .preview-browser-description {
+          color: #4a514b;
+          font-size: 0.95rem;
+          line-height: 1.45;
+          margin-bottom: 0;
+        }
+
+        .preview-meta-grid {
+          border-top: 1px solid #e4ded4;
+          display: grid;
+          gap: 10px;
+          margin-top: 16px;
+          padding-top: 14px;
+        }
+
+        .preview-meta-row {
+          display: grid;
+          gap: 8px;
+          grid-template-columns: 140px minmax(0, 1fr);
+        }
+
+        .preview-meta-label {
+          color: #8a4b2a;
+          font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+          font-size: 0.78rem;
+          font-weight: 800;
+        }
+
+        .preview-meta-value {
+          color: #1f2520;
+          font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+          font-size: 0.78rem;
+          overflow-wrap: anywhere;
+        }
+
+        .preview-brand {
+          font-size: 1rem;
+          font-weight: 800;
+        }
+
+        .preview-nav {
+          display: flex;
+          gap: 18px;
+          font-size: 0.9rem;
+          font-weight: 700;
+        }
+
+        .preview-hero {
+          align-items: stretch;
+          display: grid;
+          gap: 24px;
+          grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.75fr);
+          margin-bottom: 44px;
+        }
+
+        .preview-eyebrow {
+          color: #8a4b2a;
+          font-size: 0.78rem;
+          font-weight: 800;
+          margin: 0 0 12px;
+          text-transform: uppercase;
+        }
+
+        .preview-root h1,
+        .preview-root h2,
+        .preview-root h3,
+        .preview-root p {
+          margin-top: 0;
+        }
+
+        .preview-root h1 {
+          font-size: clamp(2.6rem, 7vw, 5rem);
+          line-height: 0.94;
+          margin-bottom: 22px;
+        }
+
+        .preview-root h2 {
+          font-size: clamp(1.7rem, 4vw, 3rem);
+          line-height: 1;
+        }
+
+        .preview-root h3 {
+          font-size: 1.25rem;
+          margin-bottom: 12px;
+        }
+
+        .preview-lede,
+        .preview-rich,
+        .preview-card p {
+          color: #4a514b;
+          font-size: 1.05rem;
+          line-height: 1.65;
+        }
+
+        .preview-actions {
+          align-items: center;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+          margin-top: 30px;
+        }
+
+        .preview-button {
+          background: #1f2520;
+          border-radius: 6px;
+          color: #ffffff;
+          display: inline-flex;
+          font-weight: 800;
+          justify-content: center;
+          min-width: 170px;
+          padding: 14px 20px;
+        }
+
+        .preview-link {
+          font-weight: 800;
+        }
+
+        .preview-panel {
+          background:
+            linear-gradient(rgba(31, 37, 32, 0.15), rgba(31, 37, 32, 0.56)),
+            url("/uploads/hero-construction.jpg");
+          background-position: center;
+          background-size: cover;
+          border-radius: 8px;
+          display: grid;
+          gap: 12px;
+          min-height: 360px;
+          padding: 20px;
+        }
+
+        .preview-panel span {
+          align-self: end;
+          background: rgba(255, 255, 255, 0.88);
+          border-radius: 6px;
+          font-weight: 800;
+          padding: 12px 14px;
+        }
+
+        .preview-intro {
+          border-top: 1px solid #ded7cc;
+          display: grid;
+          gap: 36px;
+          grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+          padding-top: 44px;
+        }
+
+        .preview-section {
+          padding-top: 48px;
+        }
+
+        .preview-work {
+          background: #ece6db;
+          margin: 48px -28px 0;
+          padding: 48px 28px;
+        }
+
+        .preview-contact {
+          align-items: center;
+          border-top: 1px solid #ded7cc;
+          display: grid;
+          gap: 28px;
+          grid-template-columns: minmax(0, 1fr) auto;
+          margin-top: 48px;
+          padding-top: 48px;
+        }
+
+        .preview-heading {
+          margin-bottom: 24px;
+          max-width: 720px;
+        }
+
+        .preview-card {
+          background: #ffffff;
+          border: 1px solid #e4ded4;
+          border-radius: 8px;
+          margin: 0 auto;
+          max-width: 720px;
+          padding: 28px;
+        }
+
+        .preview-meta {
+          color: #8a4b2a;
+          font-weight: 800;
+          margin-bottom: 16px;
+        }
+
+        @media (max-width: 760px) {
+          .preview-root {
+            padding: 18px;
+          }
+
+          .preview-header,
+          .preview-nav,
+          .preview-actions {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .preview-hero,
+          .preview-intro,
+          .preview-contact {
+            grid-template-columns: 1fr;
+          }
+
+          .preview-meta-row {
+            grid-template-columns: 1fr;
+          }
+        }
+      `;
+
+      const h = window.h;
+
+      const getField = (entry, field, fallback = "") =>
+        entry.getIn(["data", field]) || fallback;
+
+      const getNestedField = (entry, path, fallback = "") =>
+        entry.getIn(["data", ...path]) || fallback;
+
+      const PreviewCss = () => h("style", {}, previewStyles);
+
+      const MetadataPreview = ({ entry }) => {
+        const title = getField(entry, "title", "Luc Contracting");
+        const description = getField(entry, "description", "");
+        const canonicalPath = getField(entry, "canonical_path", "/");
+        const socialTitle = getField(entry, "social_title", title);
+        const socialDescription = getField(entry, "social_description", description);
+        const socialImage = getField(entry, "social_image", "");
+
+        return h("div", { className: "preview-root" },
+          h(PreviewCss),
+          h("div", { className: "preview-shell" },
+            h("aside", { className: "preview-browser", "aria-label": "Browser and search preview" },
+              h("div", { className: "preview-browser-bar" },
+                h("span", { className: "preview-dot" }),
+                h("span", { className: "preview-dot" }),
+                h("span", { className: "preview-dot" })
+              ),
+              h("div", { className: "preview-browser-content" },
+                h("div", { className: "preview-browser-title" }, title),
+                description ? h("p", { className: "preview-browser-description" }, description) : null,
+                h("div", { className: "preview-meta-grid" },
+                  h("div", { className: "preview-meta-row" },
+                    h("span", { className: "preview-meta-label" }, "title"),
+                    h("span", { className: "preview-meta-value" }, title)
+                  ),
+                  h("div", { className: "preview-meta-row" },
+                    h("span", { className: "preview-meta-label" }, "description"),
+                    h("span", { className: "preview-meta-value" }, description)
+                  ),
+                  h("div", { className: "preview-meta-row" },
+                    h("span", { className: "preview-meta-label" }, "canonical"),
+                    h("span", { className: "preview-meta-value" }, canonicalPath)
+                  ),
+                  h("div", { className: "preview-meta-row" },
+                    h("span", { className: "preview-meta-label" }, "social_title"),
+                    h("span", { className: "preview-meta-value" }, socialTitle)
+                  ),
+                  h("div", { className: "preview-meta-row" },
+                    h("span", { className: "preview-meta-label" }, "social_description"),
+                    h("span", { className: "preview-meta-value" }, socialDescription)
+                  ),
+                  h("div", { className: "preview-meta-row" },
+                    h("span", { className: "preview-meta-label" }, "social_image"),
+                    h("span", { className: "preview-meta-value" }, socialImage)
+                  )
+                )
+              )
+            )
+          )
+        );
+      };
+
+      const HomePagePreview = ({ entry, widgetFor }) => {
+        const heroHeading = getField(entry, "hero_heading", "Reliable general contracting for projects that need to be done right.");
+        const heroText = getField(entry, "hero_text", "Project details will appear here.");
+        const phone = getField(entry, "phone", "(555) 123-4567");
+        const email = getField(entry, "email", "");
+        const serviceArea = getField(entry, "service_area", "");
+        const ctaLabel = getField(entry, "cta_label", "Request an estimate");
+        const introHeading = getField(entry, "intro_heading", "Clear work, steady communication, clean results.");
+        const servicesEyebrow = getField(entry, "services_eyebrow", "Services");
+        const servicesHeading = getField(entry, "services_heading", "Built for practical residential and small commercial projects.");
+        const projectsEyebrow = getField(entry, "projects_eyebrow", "Recent work");
+        const projectsHeading = getField(entry, "projects_heading", "Simple examples Decap can update as new projects finish.");
+        const contactEyebrow = getNestedField(entry, ["contact", "eyebrow"], "Start a project");
+        const contactHeading = getNestedField(entry, ["contact", "heading"], "Tell us what you need built, repaired, or managed.");
+        const contactPhone = getNestedField(entry, ["contact", "phone"], phone);
+        const contactEmail = getNestedField(entry, ["contact", "email"], email);
+
+        return h("div", { className: "preview-root" },
+          h(PreviewCss),
+          h("div", { className: "preview-shell" },
+            h("header", { className: "preview-header" },
+              h("div", { className: "preview-brand" }, "Luc Contracting"),
+              h("div", { className: "preview-nav" },
+                h("span", {}, "Services"),
+                h("span", {}, "Work"),
+                h("span", {}, "Contact")
+              )
+            ),
+            h("section", { className: "preview-hero" },
+              h("div", {},
+                h("p", { className: "preview-eyebrow" }, "General contracting"),
+                h("h1", {}, heroHeading),
+                h("p", { className: "preview-lede" }, heroText),
+                h("div", { className: "preview-actions" },
+                  h("span", { className: "preview-button" }, ctaLabel),
+                  h("span", { className: "preview-link" }, phone)
+                )
+              ),
+              h("div", { className: "preview-panel", "aria-label": "Project highlights" },
+                h("span", {}, "Remodels"),
+                h("span", {}, "Repairs"),
+                h("span", {}, "Coordination")
+              )
+            ),
+            h("section", { className: "preview-intro" },
+              h("div", {}, h("h2", {}, introHeading)),
+              h("div", { className: "preview-rich" },
+                widgetFor("body"),
+                serviceArea ? h("p", {}, serviceArea) : null
+              )
+            ),
+            h("section", { className: "preview-section" },
+              h("div", { className: "preview-heading" },
+                h("p", { className: "preview-eyebrow" }, servicesEyebrow),
+                h("h2", {}, servicesHeading)
+              )
+            ),
+            h("section", { className: "preview-work" },
+              h("div", { className: "preview-heading" },
+                h("p", { className: "preview-eyebrow" }, projectsEyebrow),
+                h("h2", {}, projectsHeading)
+              )
+            ),
+            h("section", { className: "preview-contact" },
+              h("div", {},
+                h("p", { className: "preview-eyebrow" }, contactEyebrow),
+                h("h2", {}, contactHeading)
+              ),
+              h("div", { className: "preview-actions" },
+                contactPhone ? h("span", { className: "preview-button" }, contactPhone) : null,
+                contactEmail ? h("span", { className: "preview-link" }, contactEmail) : null
+              )
+            )
+          )
+        );
+      };
+
+      const PagesPreview = (props) =>
+        props.entry.getIn(["data", "hero_heading"]) ? HomePagePreview(props) : MetadataPreview(props);
+
+      CMS.registerPreviewTemplate("pages", PagesPreview);
+      CMS.registerPreviewTemplate("home", HomePagePreview);
+      CMS.registerPreviewTemplate("metadata", MetadataPreview);
+
+      CMS.registerPreviewTemplate("services", ({ entry, widgetFor }) =>
+        h("div", { className: "preview-root" },
+          h(PreviewCss),
+          h("article", { className: "preview-card" },
+            h("p", { className: "preview-eyebrow" }, "Service"),
+            h("h2", {}, getField(entry, "title", "Service name")),
+            h("p", { className: "preview-lede" }, getField(entry, "summary", "Service summary")),
+            h("div", { className: "preview-rich" }, widgetFor("body"))
+          )
+        )
+      );
+
+      CMS.registerPreviewTemplate("projects", ({ entry, widgetFor }) =>
+        h("div", { className: "preview-root" },
+          h(PreviewCss),
+          h("article", { className: "preview-card" },
+            h("p", { className: "preview-eyebrow" }, "Recent work"),
+            h("h2", {}, getField(entry, "title", "Project name")),
+            h("p", { className: "preview-meta" }, getField(entry, "location", "Project location")),
+            h("p", { className: "preview-lede" }, getField(entry, "summary", "Project summary")),
+            h("div", { className: "preview-rich" }, widgetFor("body"))
+          )
+        )
+      );
+
+      CMS.init();
+    </script>
   </body>
 </html>

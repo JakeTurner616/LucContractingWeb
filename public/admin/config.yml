@@ -15,18 +15,39 @@ collections:
   - name: pages
     label: Pages
     files:
+      - name: metadata
+        label: Metadata
+        file: src/content/site/metadata.md
+        fields:
+          - { name: title, label: Browser Title, widget: string }
+          - { name: description, label: Meta Description, widget: text, required: false }
+          - { name: canonical_path, label: Canonical Path, widget: string, default: "/" }
+          - { name: social_title, label: Social Share Title, widget: string, required: false }
+          - { name: social_description, label: Social Share Description, widget: text, required: false }
+          - { name: social_image, label: Social Share Image, widget: image, required: false }
       - name: home
         label: Home Page
         file: src/content/pages/home.md
         fields:
-          - { name: title, label: Title, widget: string }
-          - { name: description, label: Meta Description, widget: text, required: false }
           - { name: hero_heading, label: Hero Heading, widget: string }
           - { name: hero_text, label: Hero Text, widget: text }
           - { name: phone, label: Phone Number, widget: string }
           - { name: email, label: Email, widget: string, required: false }
           - { name: service_area, label: Service Area, widget: string, required: false }
           - { name: cta_label, label: Button Label, widget: string, required: false }
+          - { name: intro_heading, label: About Section Heading, widget: string }
+          - { name: services_eyebrow, label: Services Eyebrow, widget: string }
+          - { name: services_heading, label: Services Section Heading, widget: string }
+          - { name: projects_eyebrow, label: Projects Eyebrow, widget: string }
+          - { name: projects_heading, label: Projects Section Heading, widget: string }
+          - label: Contact Section
+            name: contact
+            widget: object
+            fields:
+              - { name: eyebrow, label: Eyebrow, widget: string }
+              - { name: heading, label: Heading, widget: string }
+              - { name: phone, label: Phone Number, widget: string, required: false }
+              - { name: email, label: Email, widget: string, required: false }
           - { name: body, label: About Copy, widget: markdown }
 
   - name: services
