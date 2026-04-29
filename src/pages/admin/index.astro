@@ -298,6 +298,136 @@
             grid-template-columns: 1fr;
           }
         }
+
+        .preview-root {
+          background:
+            linear-gradient(160deg, rgba(217, 178, 86, 0.12), transparent 26%),
+            radial-gradient(circle at 85% 8%, rgba(217, 178, 86, 0.11), transparent 28%),
+            #070807;
+          color: #f4efe4;
+        }
+
+        .preview-header,
+        .preview-browser,
+        .preview-card {
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+          border: 1px solid rgba(217, 178, 86, 0.28);
+          box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+        }
+
+        .preview-header {
+          backdrop-filter: blur(18px);
+          border-radius: 8px;
+          min-height: 72px;
+          padding: 14px 18px;
+        }
+
+        .preview-browser-bar {
+          background: rgba(7, 8, 7, 0.72);
+          border-bottom-color: rgba(217, 178, 86, 0.28);
+        }
+
+        .preview-dot,
+        .preview-button {
+          background: linear-gradient(135deg, #f0d58b, #d9b256);
+        }
+
+        .preview-browser-title,
+        .preview-meta-value,
+        .preview-root h1,
+        .preview-root h2,
+        .preview-root h3 {
+          color: #ffffff;
+        }
+
+        .preview-browser-description,
+        .preview-lede,
+        .preview-rich,
+        .preview-card p {
+          color: #b8b2a4;
+        }
+
+        .preview-eyebrow,
+        .preview-meta,
+        .preview-meta-label,
+        .preview-link {
+          color: #d9b256;
+        }
+
+        .preview-button {
+          color: #070807;
+        }
+
+        .preview-panel {
+          align-items: end;
+          background:
+            linear-gradient(180deg, rgba(7, 8, 7, 0.05), rgba(7, 8, 7, 0.28)),
+            url("/uploads/hero-construction.jpg");
+          border: 1px solid rgba(217, 178, 86, 0.28);
+          box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+          gap: 0;
+        }
+
+        .preview-frame {
+          backdrop-filter: blur(14px);
+          background: linear-gradient(135deg, rgba(7, 8, 7, 0.9), rgba(16, 18, 17, 0.74));
+          border: 1px solid rgba(240, 213, 139, 0.36);
+          border-radius: 8px;
+          justify-self: center;
+          max-width: 360px;
+          padding: 24px 26px 22px;
+          position: relative;
+          text-align: center;
+        }
+
+        .preview-frame::before {
+          background: linear-gradient(90deg, transparent, #f0d58b, #d9b256, transparent);
+          content: "";
+          height: 2px;
+          left: 50%;
+          position: absolute;
+          top: 14px;
+          transform: translateX(-50%);
+          width: 86px;
+        }
+
+        .preview-scope-label {
+          color: #f0d58b;
+          display: block;
+          font-size: 0.72rem;
+          font-weight: 800;
+          letter-spacing: 0.18em;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
+
+        .preview-scope-text {
+          color: rgba(244, 239, 228, 0.82);
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+
+        .preview-scope-text strong {
+          color: #f0d58b;
+        }
+
+        .preview-project-image {
+          aspect-ratio: 16 / 9;
+          border: 1px solid rgba(240, 213, 139, 0.22);
+          border-radius: 6px;
+          margin-bottom: 22px;
+          object-fit: cover;
+          width: 100%;
+        }
+
+        .preview-intro,
+        .preview-contact {
+          border-top: 0;
+        }
+
+        .preview-work {
+          background: linear-gradient(180deg, transparent 0, rgba(11, 12, 11, 0.32) 18%, rgba(11, 12, 11, 0.76) 38%, rgba(11, 12, 11, 0.76) 62%, rgba(11, 12, 11, 0.32) 82%, transparent 100%);
+        }
       `;
 
       const h = window.h;
@@ -363,19 +493,23 @@
       };
 
       const HomePagePreview = ({ entry, widgetFor }) => {
-        const heroHeading = getField(entry, "hero_heading", "Reliable general contracting for projects that need to be done right.");
+        const heroHeading = getField(entry, "hero_heading", "Irrigation and sprinkler care done with precision.");
         const heroText = getField(entry, "hero_text", "Project details will appear here.");
+        const heroEyebrow = getField(entry, "hero_eyebrow", "Irrigation contracting");
+        const heroImage = getField(entry, "hero_image", "/uploads/hero-construction.jpg");
+        const heroScopeLabel = getField(entry, "hero_scope_label", "What We Handle:");
+        const heroScopeText = getField(entry, "hero_scope_text", "Careful diagnostics, practical repairs, and seasonal maintenance.");
         const phone = getField(entry, "phone", "(555) 123-4567");
         const email = getField(entry, "email", "");
         const serviceArea = getField(entry, "service_area", "");
         const ctaLabel = getField(entry, "cta_label", "Request an estimate");
-        const introHeading = getField(entry, "intro_heading", "Clear work, steady communication, clean results.");
+        const introHeading = getField(entry, "intro_heading", "Clear diagnostics, careful repairs, dependable watering.");
         const servicesEyebrow = getField(entry, "services_eyebrow", "Services");
-        const servicesHeading = getField(entry, "services_heading", "Built for practical residential and small commercial projects.");
+        const servicesHeading = getField(entry, "services_heading", "Practical irrigation support for healthy lawns, landscapes, and properties.");
         const projectsEyebrow = getField(entry, "projects_eyebrow", "Recent work");
-        const projectsHeading = getField(entry, "projects_heading", "Simple examples Decap can update as new projects finish.");
+        const projectsHeading = getField(entry, "projects_heading", "Common sprinkler and irrigation projects handled with care.");
         const contactEyebrow = getNestedField(entry, ["contact", "eyebrow"], "Start a project");
-        const contactHeading = getNestedField(entry, ["contact", "heading"], "Tell us what you need built, repaired, or managed.");
+        const contactHeading = getNestedField(entry, ["contact", "heading"], "Tell us what your sprinkler or irrigation system needs.");
         const contactPhone = getNestedField(entry, ["contact", "phone"], phone);
         const contactEmail = getNestedField(entry, ["contact", "email"], email);
 
@@ -392,7 +526,7 @@
             ),
             h("section", { className: "preview-hero" },
               h("div", {},
-                h("p", { className: "preview-eyebrow" }, "General contracting"),
+                h("p", { className: "preview-eyebrow" }, heroEyebrow),
                 h("h1", {}, heroHeading),
                 h("p", { className: "preview-lede" }, heroText),
                 h("div", { className: "preview-actions" },
@@ -400,10 +534,15 @@
                   h("span", { className: "preview-link" }, phone)
                 )
               ),
-              h("div", { className: "preview-panel", "aria-label": "Project highlights" },
-                h("span", {}, "Remodels"),
-                h("span", {}, "Repairs"),
-                h("span", {}, "Coordination")
+              h("div", {
+                className: "preview-panel",
+                "aria-label": "Project highlights",
+                style: { backgroundImage: `linear-gradient(180deg, rgba(7, 8, 7, 0.05), rgba(7, 8, 7, 0.28)), url("${heroImage}")` }
+              },
+                h("div", { className: "preview-frame" },
+                  h("span", { className: "preview-scope-label" }, heroScopeLabel),
+                  h("div", { className: "preview-scope-text" }, heroScopeText)
+                )
               )
             ),
             h("section", { className: "preview-intro" },
@@ -458,18 +597,21 @@
         )
       );
 
-      CMS.registerPreviewTemplate("projects", ({ entry, widgetFor }) =>
-        h("div", { className: "preview-root" },
+      CMS.registerPreviewTemplate("projects", ({ entry, widgetFor }) => {
+        const image = getField(entry, "image", "");
+
+        return h("div", { className: "preview-root" },
           h(PreviewCss),
           h("article", { className: "preview-card" },
+            image ? h("img", { className: "preview-project-image", src: image, alt: "" }) : null,
             h("p", { className: "preview-eyebrow" }, "Recent work"),
             h("h2", {}, getField(entry, "title", "Project name")),
             h("p", { className: "preview-meta" }, getField(entry, "location", "Project location")),
             h("p", { className: "preview-lede" }, getField(entry, "summary", "Project summary")),
             h("div", { className: "preview-rich" }, widgetFor("body"))
           )
-        )
-      );
+        );
+      });
 
       CMS.init();
     </script>

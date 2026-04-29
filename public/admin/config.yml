@@ -31,6 +31,10 @@ collections:
         fields:
           - { name: hero_heading, label: Hero Heading, widget: string }
           - { name: hero_text, label: Hero Text, widget: text }
+          - { name: hero_eyebrow, label: Hero Eyebrow, widget: string, required: false, default: Irrigation contracting }
+          - { name: hero_image, label: Hero Image, widget: image, required: false, default: /uploads/hero-construction.jpg }
+          - { name: hero_scope_label, label: Hero Image Caption Label, widget: string, required: false, default: "What We Handle:" }
+          - { name: hero_scope_text, label: Hero Image Caption Text, widget: text, required: false, default: Careful diagnostics, practical repairs, and seasonal maintenance. }
           - { name: phone, label: Phone Number, widget: string }
           - { name: email, label: Email, widget: string, required: false }
           - { name: service_area, label: Service Area, widget: string, required: false }
@@ -48,21 +52,32 @@ collections:
               - { name: heading, label: Heading, widget: string }
               - { name: phone, label: Phone Number, widget: string, required: false }
               - { name: email, label: Email, widget: string, required: false }
+          - label: Footer
+            name: footer
+            widget: object
+            fields:
+              - { name: service_area, label: Service Area Text, widget: string, required: false, default: Serving the Greater Denver Metropolitan Area }
+              - label: Footer Highlights
+                name: highlights
+                widget: list
+                required: false
+                field: { name: item, label: Highlight, widget: string }
+              - { name: legal, label: Legal Text, widget: string, required: false, default: All rights reserved. }
           - { name: body, label: About Copy, widget: markdown }
 
   - name: services
-    label: Services
+    label: Irrigation Services
     folder: src/content/services
     create: true
     slug: "{{slug}}"
     fields:
       - { name: title, label: Service Name, widget: string }
-      - { name: summary, label: Short Summary, widget: text }
+      - { name: summary, label: Service Summary, widget: text }
       - { name: order, label: Display Order, widget: number, required: false, value_type: int }
       - { name: body, label: Details, widget: markdown }
 
   - name: projects
-    label: Projects
+    label: Recent Irrigation Work
     folder: src/content/projects
     create: true
     slug: "{{slug}}"
@@ -70,6 +85,6 @@ collections:
       - { name: title, label: Project Name, widget: string }
       - { name: location, label: Location, widget: string, required: false }
       - { name: image, label: Project Image, widget: image, required: false }
-      - { name: summary, label: Short Summary, widget: text, required: false }
+      - { name: summary, label: Project Summary, widget: text, required: false }
       - { name: order, label: Display Order, widget: number, required: false, value_type: int }
       - { name: body, label: Project Details, widget: markdown }

@@ -1,7 +1,7 @@
 ---
-title: Project Management
-summary: Planning, scheduling, trade coordination, and steady communication for multi-step construction work.
+title: Irrigation Upgrades
+summary: Controller setup, zone improvements, coverage corrections, and practical updates for changing landscapes.
 order: 3
 ---
 
-For projects with multiple trades or phases, we keep the plan visible and the work moving without letting details drift.
+When an existing system needs smarter control or better coverage, we help plan the update and keep the work organized from inspection to testing.

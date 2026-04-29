@@ -1,8 +1,10 @@
 ---
-title: Basement Finish
+title: Leak and Valve Repair
 location: Local residence
-summary: Framing, finish coordination, and detail work for a more useful lower-level living space.
+image: /uploads/hero-construction.jpg
+summary: Located a leaking irrigation line, repaired the damaged section, and
+  tested the affected zone.
 order: 2
 ---
 
-We helped turn unfinished square footage into a practical, comfortable extension of the home.
+We helped stop wasted water and brought the zone back into reliable service with a clean, practical repair.

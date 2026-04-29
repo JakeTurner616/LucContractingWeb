@@ -1,7 +1,7 @@
 ---
-title: Repairs & Improvements
-summary: Practical fixes, punch lists, drywall, trim, doors, fixtures, and the small work that keeps a property sharp.
+title: System Maintenance
+summary: Seasonal checks, head adjustments, nozzle changes, zone testing, and tune-ups that keep systems efficient.
 order: 2
 ---
 
-Small projects still deserve clean workmanship and clear communication. We help bundle repairs so they get handled efficiently.
+Regular maintenance helps prevent dry spots, overspray, water waste, and surprise failures when the system is needed most.

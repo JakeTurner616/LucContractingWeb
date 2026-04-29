@@ -1,7 +1,7 @@
 ---
-title: Remodeling
-summary: Kitchens, baths, basements, and interior updates with clear scope and tidy job sites.
+title: Sprinkler Repairs
+summary: Broken heads, leaking lines, stuck valves, uneven coverage, and pressure issues diagnosed and repaired.
 order: 1
 ---
 
-We coordinate the moving pieces of remodel work so your space is protected, the schedule is visible, and the finished result feels intentional.
+We trace sprinkler problems carefully, explain the repair clearly, and restore dependable coverage without unnecessary disruption to the yard.

@@ -1,21 +1,32 @@
 ---
-hero_heading: Reliable general contracting Google OAUTH push test
-hero_text: From repairs and punch lists to remodels and build-outs, Luc
-  Contracting keeps the work organized, clean, and moving.
-phone: (555) 123-4567
-email: hello@luccontracting.com
-service_area: Serving homeowners and small businesses across the local area.
+hero_heading: Irrigation and sprinkler care done with precision
+hero_text: From leak repairs and sprinkler head adjustments to seasonal
+  maintenance, Luc Contracting keeps watering systems efficient, reliable, and
+  ready for the weather.
+hero_eyebrow: Irrigation contracting
+hero_image: /uploads/lumiere-rezaie-m3wqgn0vlj8-unsplash.jpg
+hero_scope_label: "What We Handle:"
+hero_scope_text: Careful diagnostics, practical repairs, and seasonal maintenance.
+phone: (720) 555-1234
+email: contact@luccontracting.com
+service_area: Serving the Greater Denver Metropolitan Area.
 cta_label: Request an estimate
-intro_heading: Clear work, steady communication, clean results.
+intro_heading: Practical support for systems that should feel simple to own.
 services_eyebrow: Services
-services_heading: Built for practical residential and small commercial projects.
+services_heading: Practical irrigation support for healthy lawns, landscapes, and properties.
 projects_eyebrow: Recent work
-projects_heading: Simple examples Decap can update as new projects finish.
+projects_heading: Common sprinkler and irrigation projects handled with care.
 contact:
   eyebrow: Start a project
-  heading: Tell us what you need built, repaired, or managed.
-  phone: (555) 123-4567
-  email: hello@luccontracting.com
+  heading: Tell us what your sprinkler or irrigation system needs.
+  phone: (720) 555-1234
+  email: contact@luccontracting.com
+footer:
+  service_area: Serving the Greater Denver Metropolitan Area
+  highlights:
+    - Free Estimates
+    - Residential Services
+  legal: All rights reserved.
 ---
 
-Luc Contracting is built for straightforward communication, careful work, and projects that feel manageable from first walkthrough to final cleanup.
+Luc Contracting is built for straightforward communication, practical troubleshooting, and repair work that keeps irrigation systems simple to understand and easier to maintain.

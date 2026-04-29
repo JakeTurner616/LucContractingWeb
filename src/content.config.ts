@@ -17,6 +17,10 @@ const pages = defineCollection({
     }).optional(),
     hero_heading: z.string(),
     hero_text: z.string(),
+    hero_eyebrow: z.string().optional(),
+    hero_image: z.string().optional(),
+    hero_scope_label: z.string().optional(),
+    hero_scope_text: z.string().optional(),
     phone: z.string(),
     email: z.string().email().optional(),
     service_area: z.string().optional(),
@@ -31,6 +35,11 @@ const pages = defineCollection({
       heading: z.string().optional(),
       phone: z.string().optional(),
       email: z.string().email().optional(),
+    }).optional(),
+    footer: z.object({
+      service_area: z.string().optional(),
+      highlights: z.array(z.string()).optional(),
+      legal: z.string().optional(),
     }).optional(),
   }),
 });
