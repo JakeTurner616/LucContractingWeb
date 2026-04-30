@@ -930,6 +930,28 @@ const footerLegal = footer.legal ?? "All rights reserved.";
 		contain-intrinsic-size: auto 420px;
 	}
 
+	@media (min-width: 821px) {
+		.hero::after,
+		.intro::after,
+		.section::after,
+		.contact::after {
+			background: linear-gradient(90deg, transparent, rgba(240, 213, 139, 0.32), rgba(217, 178, 86, 0.16), transparent);
+			bottom: 0;
+			content: "";
+			height: 1px;
+			left: 24px;
+			pointer-events: none;
+			position: absolute;
+			right: 24px;
+		}
+
+		.work::after {
+			left: max(24px, calc((100vw - 1120px) / 2 + 24px));
+			right: max(24px, calc((100vw - 1120px) / 2 + 24px));
+			z-index: 1;
+		}
+	}
+
 	.section-heading {
 		margin-bottom: 34px;
 		max-width: 760px;
