@@ -1,7 +1,7 @@
 ---
 title: Leak and Valve Repair
 location: Local residence
-image: /uploads/hero-construction.jpg
+image: /uploads/lumiere-rezaie-m3wqgn0vlj8-unsplash.jpg
 summary: Located a leaking irrigation line, repaired the damaged section, and
   tested the affected zone.
 order: 2
