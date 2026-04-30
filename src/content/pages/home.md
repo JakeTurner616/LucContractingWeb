@@ -1,8 +1,6 @@
 ---
 hero_heading: Irrigation and sprinkler care done with precision
-hero_text: From leak repairs and sprinkler head adjustments to seasonal
-  maintenance, Luc Contracting keeps watering systems efficient, reliable, and
-  ready for the weather.
+hero_text: Luc Contracting handles repairs, adjustments, and seasonal sprinkler maintenance to keep systems running smoothly.
 hero_eyebrow: Irrigation contracting
 hero_image: /uploads/lumiere-rezaie-m3wqgn0vlj8-unsplash.jpg
 hero_scope_label: "What We Handle:"
