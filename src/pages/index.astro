@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
 import { readFileSync } from "node:fs";
+import { extname } from "node:path";
 import Layout from "../layouts/Layout.astro";
 
 const home = await getEntry("pages", "home");
@@ -34,6 +35,18 @@ const heroScopeHtml = heroScopeText.replace(
 	"<span>$1</span>",
 );
 const heroImage = home.data.hero_image ?? "/uploads/hero-construction.jpg";
+const imageMimeTypes: Record<string, string> = {
+	".jpg": "image/jpeg",
+	".jpeg": "image/jpeg",
+	".png": "image/png",
+	".webp": "image/webp",
+};
+const heroImagePath = heroImage.startsWith("/") ? `public${heroImage}` : undefined;
+const heroImageMimeType = imageMimeTypes[extname(heroImage).toLowerCase()];
+const heroImageSrc =
+	heroImagePath && heroImageMimeType
+		? `data:${heroImageMimeType};base64,${readFileSync(heroImagePath).toString("base64")}`
+		: heroImage;
 const logoSvg = readFileSync("public/uploads/luc-logo-simplified-transparent.svg", "utf8");
 const footer = home.data.footer ?? {};
 const footerServiceArea = footer.service_area ?? home.data.service_area;
@@ -49,7 +62,6 @@ const footerLegal = footer.legal ?? "All rights reserved.";
 	socialDescription={meta.socialDescription}
 	socialImage={meta.socialImage}
 >
-	<link slot="head" rel="preload" as="image" href={heroImage} fetchpriority="high" />
 	<style is:inline slot="head">
 		html {
 			background: #070807;
@@ -147,8 +159,7 @@ const footerLegal = footer.legal ?? "All rights reserved.";
 			color: #b8b2a4;
 			font-size: 1.05rem;
 			line-height: 1.7;
-			margin: 0;
-			margin-right: clamp(16px, 3vw, 44px);
+			margin: 0 clamp(16px, 3vw, 44px) 0 0;
 			max-width: 640px;
 		}
 
@@ -321,7 +332,8 @@ const footerLegal = footer.legal ?? "All rights reserved.";
 			.lede {
 				font-size: 1rem;
 				line-height: 1.55;
-				margin-right: 0;
+				margin: 0 auto;
+				max-width: min(100% - 32px, 560px);
 				text-align: left;
 			}
 
@@ -404,7 +416,7 @@ const footerLegal = footer.legal ?? "All rights reserved.";
 				</div>
 			</div>
 			<div class="hero-panel" aria-label="Project highlights">
-				<img class="hero-image" src={heroImage} alt="" width="1600" height="1067" loading="eager" decoding="sync" fetchpriority="high" />
+				<img class="hero-image" src={heroImageSrc} alt="" width="1600" height="1067" loading="eager" decoding="sync" fetchpriority="high" />
 				<span class="hero-scrim" aria-hidden="true"></span>
 				<div class="hero-frame">
 					<span class="scope-label">{home.data.hero_scope_label ?? "What We Handle:"}</span>
@@ -768,7 +780,7 @@ const footerLegal = footer.legal ?? "All rights reserved.";
 	}
 
 	.lede {
-		margin-right: clamp(16px, 3vw, 44px);
+		margin: 0 clamp(16px, 3vw, 44px) 0 0;
 		max-width: 640px;
 	}
 
@@ -1333,7 +1345,8 @@ const footerLegal = footer.legal ?? "All rights reserved.";
 		}
 
 		.lede {
-			margin-right: 0;
+			margin: 0 auto;
+			max-width: min(100% - 32px, 560px);
 			text-align: left;
 		}
 
