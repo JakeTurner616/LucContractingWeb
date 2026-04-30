@@ -7,14 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
     <title>Luc Contracting CMS</title>
   </head>
   <body>
-    <script>
+    <script is:inline>
       window.CMS_MANUAL_INIT = true;
     </script>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script>
+    <script is:inline src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script is:inline>
       const relabelAuthButton = () => {
         document.querySelectorAll("button, a").forEach((element) => {
           if (element.textContent?.trim() === "Login with GitHub") {
