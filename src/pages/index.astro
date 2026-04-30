@@ -1188,6 +1188,7 @@ const footerLegal = footer.legal ?? "All rights reserved.";
 			border: 1px solid rgba(240, 213, 139, 0.26);
 			border-radius: 6px;
 			color: var(--cream);
+			cursor: pointer;
 			display: inline-flex;
 			flex: 0 0 auto;
 			flex-direction: column;
@@ -1196,6 +1197,11 @@ const footerLegal = footer.legal ?? "All rights reserved.";
 			justify-content: center;
 			padding: 0;
 			width: 42px;
+		}
+
+		.nav-toggle:hover {
+			background: rgba(244, 239, 228, 0.14);
+			border-color: rgba(240, 213, 139, 0.42);
 		}
 
 		.nav-toggle span {
