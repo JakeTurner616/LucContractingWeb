@@ -49,6 +49,10 @@ async function saveCache(cache) {
 }
 
 async function optimizeImage(filePath, cache) {
+	if (filePath.includes(`${path.sep}uploads${path.sep}favicon${path.sep}`)) {
+		return;
+	}
+
 	const before = await stat(filePath);
 	const relativePath = path.relative(process.cwd(), filePath);
 	const cacheEntry = cache[relativePath];
